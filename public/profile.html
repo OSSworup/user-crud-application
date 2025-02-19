@@ -26,9 +26,9 @@
 
     <script>
         let currentUser = null;
-
+        const baseUrl = window.location.hostname === 'localhost' ? 'http://localhost:3000' : 'https://user-crud-application-phxy.onrender.com';
         async function fetchUserProfile() {
-            const response = await fetch("http://localhost:3000/user/", {
+            const response = await fetch(`${baseUrl}/user/`, {
                 method: "GET",
                 credentials: "include"
             });
@@ -62,7 +62,7 @@
             const updatedFullName = document.getElementById("update_full_name").value;
             const updatedPhone = document.getElementById("update_phone").value;
 
-            const response = await fetch(`http://localhost:3000/user/${currentUser._id}`, {
+            const response = await fetch(`${baseUrl}user/${currentUser._id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",
@@ -79,7 +79,7 @@
         });
 
         document.getElementById("logoutBtn").addEventListener("click", async function() {
-            await fetch("http://localhost:3000/user/logout", { method: "GET", credentials: "include" });
+            await fetch(`${baseUrl}/user/logout`, { method: "GET", credentials: "include" });
             localStorage.removeItem("user");
             window.location.href = "login.html";
         });
@@ -87,7 +87,7 @@
         document.getElementById("deleteBtn").addEventListener("click", async function() {
             if (!confirm("Are you sure you want to delete your account?")) return;
 
-            const response = await fetch(`http://localhost:3000/user/${currentUser._id}`, {
+            const response = await fetch(`${baseUrl}/user/${currentUser._id}`, {
                 method: "DELETE",
                 credentials: "include"
             });

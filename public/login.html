@@ -15,13 +15,14 @@
     </form>
 
     <script>
+        const baseUrl = window.location.hostname === 'localhost' ? 'http://localhost:3000' : 'https://user-crud-application-phxy.onrender.com';
         document.getElementById("loginForm").addEventListener("submit", async function(event) {
             event.preventDefault();
 
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
 
-            const response = await fetch("http://localhost:3000/user/login", {
+            const response = await fetch(`${baseUrl}/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password }),

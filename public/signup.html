@@ -17,6 +17,7 @@
     </form>
 
     <script>
+        const baseUrl = window.location.hostname === 'localhost' ? 'http://localhost:3000' : 'https://user-crud-application-phxy.onrender.com';
         document.getElementById("signupForm").addEventListener("submit", async function(event) {
             event.preventDefault();
 
@@ -25,7 +26,7 @@
             const password = document.getElementById("password").value;
             const phone = document.getElementById("phone").value;
 
-            const response = await fetch("http://localhost:3000/user/signup", {
+            const response = await fetch(`${baseUrl}/user/signup`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ full_name, username, password, phone }),
