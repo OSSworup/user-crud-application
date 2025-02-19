@@ -5,6 +5,7 @@ const passport = require('./auth');
 const userRoute = require('./routes/userRoutes');
 require('dotenv').config();
 const db = require('./db');
+const MongoStore = require('connect-mongo');
 
 const app = express();
 
