@@ -62,7 +62,7 @@
             const updatedFullName = document.getElementById("update_full_name").value;
             const updatedPhone = document.getElementById("update_phone").value;
 
-            const response = await fetch(`${baseUrl}user/${currentUser._id}`, {
+            const response = await fetch(`${baseUrl}/user/${currentUser._id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",
