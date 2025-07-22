@@ -6,10 +6,11 @@ const userRoute = require('./routes/userRoutes');
 require('dotenv').config();
 const db = require('./db');
 const MongoStore = require('connect-mongo');
+const cors=require('cors');
 
 const app = express();
 
-
+app.use(cors());
 app.use(express.json());  
 app.use(express.urlencoded({ extended: true })); 
 
